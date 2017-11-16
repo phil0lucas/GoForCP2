@@ -10,13 +10,13 @@ import (
 
 	"github.com/jung-kurt/gofpdf"
 	"github.com/montanaflynn/stats"
-	"github.com/phil0lucas/GoForCP/CPUtils"
-	"github.com/phil0lucas/GoForCP/DM"
+	"github.com/phil0lucas/GoForCP2/CPUtils"
+	"github.com/phil0lucas/GoForCP2/DM"
 )
 
 // Input and output files
-var infile = flag.String("i", "../CreateData/dm3.csv", "Name of input file")
-var outfile = flag.String("o", "summary15.pdf", "Name of output file")
+var infile = flag.String("i", "dm.csv", "Name of input file")
+var outfile = flag.String("o", "summary.pdf", "Name of output file")
 
 // Define header structure
 type headers struct {

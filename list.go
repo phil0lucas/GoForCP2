@@ -9,13 +9,13 @@ import (
 	"strings"
 
 	"github.com/jung-kurt/gofpdf"
-	"github.com/phil0lucas/GoForCP/CPUtils"
-	"github.com/phil0lucas/GoForCP/DM"
+	"github.com/phil0lucas/GoForCP2/CPUtils"
+	"github.com/phil0lucas/GoForCP2/DM"
 )
 
 // Input and output files. These can be changed in the call using the -i and -o flags
-var infile = flag.String("i", "../CreateData/dm3.csv", "Name of input file")
-var outfile = flag.String("o", "listing03.pdf", "Name of output file")
+var infile = flag.String("i", "dm.csv", "Name of input file")
+var outfile = flag.String("o", "listing.pdf", "Name of output file")
 
 // Header and Footer text is collected together in structs
 type headers struct {
@@ -48,7 +48,7 @@ func titles() *headers {
 		head3Left:   "Protocol XYZ123",
 		head4Centre: "Study XYZ123",
 		head5Centre: "Listing of Demographic Data by Treatment Arm",
-		head6Centre: "All Randomised Subjects",
+		head6Centre: "All Randomized Subjects",
 	}
 	return h
 }

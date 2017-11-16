@@ -14,14 +14,14 @@ import (
 
 	"github.com/jung-kurt/gofpdf"
 	"github.com/montanaflynn/stats"
-	"github.com/phil0lucas/GoForCP/CPUtils"
-	"github.com/phil0lucas/GoForCP/SC"
-	"github.com/phil0lucas/GoForCP/VS"
+	"github.com/phil0lucas/GoForCP2/CPUtils"
+	"github.com/phil0lucas/GoForCP2/SC"
+	"github.com/phil0lucas/GoForCP2/VS"
 )
 
-var infile1 = flag.String("s", "../CreateData/sc3.csv", "Name of SC input file")
-var infile2 = flag.String("v", "../CreateData/vs3.csv", "Name of VS input file")
-var outfile = flag.String("o", "plot01.pdf", "Name of output file")
+var infile1 = flag.String("s", "sc.csv", "Name of SC input file")
+var infile2 = flag.String("v", "vs.csv", "Name of VS input file")
+var outfile = flag.String("o", "plot.pdf", "Name of output file")
 
 // The graphics dimensions in the same ratio as an A4 landscape sheet
 // allowing for title and footnote space.
@@ -206,9 +206,14 @@ func createPoints(sr []results) map[Line]plotter.XYs {
 // Generate a slice of tick mark values to be added to each plot
 func genTicks(min, max, interval float64) []plot.Tick {
 	var t []plot.Tick
-	for i := min; i < max; i += interval {
+	for i := min; i <= max; i += interval {
 		position := i
-		label := strconv.Itoa(int(i))
+		var label string
+		if position == 0 {
+			label = "Scr"
+		} else {
+			label = strconv.Itoa(int(i))
+		}
 		s := plot.Tick{position, label}
 		t = append(t, s)
 	}
@@ -285,9 +290,7 @@ func WriteReport(outputFile *string, h *headers, f *footers, g1 string, g2 strin
 	pdf.AliasNbPages("")
 
 	// 	AddPage() executes the generated Header and Footer functions
-	y := pdf.GetY()
 	pdf.AddPage()
-	y = pdf.GetY()
 	// Include the first graph
 	pdf.Image(g1, 30, 40, imgX, imgY, false, "", 0, "")
 	pdf.AddPage()

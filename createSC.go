@@ -5,11 +5,11 @@ package main
 
 import (
 	"flag"
-	"github.com/phil0lucas/GoForCP/SC"
+	"github.com/phil0lucas/GoForCP2/SC"
 )
 
 //	The -o flag allows change of the output file name
-var outfile = flag.String("o", "sc3.csv", "Name of output file")
+var outfile = flag.String("o", "sc.csv", "Name of output file")
 
 func main() {
 	flag.Parse()
